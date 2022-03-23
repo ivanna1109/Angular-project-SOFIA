@@ -1,0 +1,131 @@
+.body {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1000px;
+	text-align: center;
+	padding: 100px 50px 50px;
+	background-color: rgba(255, 255, 255, .85);
+	min-height: 100vh;
+	
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.body h2{
+    font-size: 30px;
+    color: whitesmoke;
+    margin: 10px;
+    
+}
+
+.logo {
+	position: absolute;
+	top: 0;
+	transform: translateY(-40%);
+	padding: 10px 30px;
+	background: #fff;
+	border: 10px solid rgb(134, 32, 32);
+	border-radius: 50%;
+	font-weight: 800;
+	font-size: 2rem;
+	color: rgb(134, 32, 32);
+}
+
+.lbl-red {
+    border-top: 1px solid var(--red-col);
+    border-bottom: 1px solid var(--red-col);
+    color:  red;
+}
+
+.lbl-red:hover {
+    border-left: 1px solid var(--red-col);
+}
+
+.lbl-basic {
+    padding: 5px 25px;
+    display: inline-block;
+	margin: 5px 5px 5px 0;
+	font-size: 20px;
+    border-top: 1px solid var(--basic-col);
+    border-bottom: 1px solid var(--basic-col);
+    color: white;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-radius: 0;
+    transition: border-color .5s, border-radius .5s;
+}
+
+.btn-red-out {
+    outline:none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 5px 25px;
+    margin-top: 20px;
+    color:rgb(124, 23, 23);
+    background-color: white;
+    border: 1px black;
+    transition: border-radius .5s;
+}
+.btn-red-out:hover {
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.lbl-basic:hover {
+    border-left: 1px solid;
+    border-radius: 10px 0 0 10px;
+}
+
+.input-f-red-out {
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    transition: border-radius .5s;
+
+    background-color: white;
+    border: 1px solid var(--red-col);
+    color: var(--red-col);
+}
+.input-f-red::placeholder {
+    color: #c7c6c1;
+}
+.input-f-red-out:hover, .input-f-red-out:focus {
+    border-radius: 0;
+}
+
+.btn-blue-out {
+    outline:none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 10px 25px;
+
+    color: var(--blue-col);
+    background-color: transparent;
+    border: 1px solid var(--blue-col);
+    transition: border-radius .5s;
+}
+.btn-blue-out:hover {
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.box {
+	margin: 80px 30px 30px 30px;
+    border: 10px solid var(--red-col);
+    max-width: 500px;
+	background-color: rgb(124, 23, 23);
+	border-radius: 10px;
+	padding: 40px 80px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: sans-serif;
+	position: relative;
+}

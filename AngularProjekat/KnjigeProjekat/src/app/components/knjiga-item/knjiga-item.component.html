@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <img class="rounded float-start" [src]="book.slika"/>
+        </div>
+        <div class="col-md-6" style="padding-left:80px">
+            <h3 style="color:rgb(134, 32, 32); text-align: center; text-decoration: solid; font-size: 30px;"><b>{{book.naziv}}</b></h3><br>
+            <h4 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Pisac: {{pisac.ime}} {{pisac.prezime}}</h4>
+            <h4 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Izdavač: {{izdavac.naziv}}</h4><br>
+            <h4 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Godina izdanja: {{book.godinaIzdanja}}.</h4>
+            <p style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Cena: {{book.cena}}din</p><br><br>
+            <div><a  routerLink="/prikaz-knjige/{{book.naziv}}" class="btn btn-red btn-lg" role="button" >Detaljnije---></a></div>
+        </div>
+    </div>
+</div><br><br>

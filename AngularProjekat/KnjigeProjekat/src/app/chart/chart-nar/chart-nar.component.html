@@ -1,0 +1,29 @@
+<div class="body">
+    <h2>3 knjige koje su najviše naručivane</h2><br><br>
+    <div *ngIf="najpopularnije != undefined">
+        <table class="table-basic table-red">
+            <tr>
+                <th>Naziv knjige</th>
+                <th>Godina izdanja</th>
+            </tr>
+            <tr *ngFor="let knjiga of najpopularnije">
+                <td><a  routerLink="/prikaz-knjige/{{knjiga.naziv}}" style="color:  rgb(134, 32, 32)">{{knjiga.naziv}}</a></td>
+                <td>{{knjiga.godinaIzdanja}}.</td>
+            </tr>
+        </table>
+    </div>
+    <h2></h2>
+    <br><br><br><h2>3 knjige sa najvećim ocenama</h2><br><br>
+    <div *ngIf="ocenjene != undefined">
+        <table class="table-basic table-red">
+            <tr>
+                <th>Naziv knjige</th>
+                <th>Godina izdanja</th>
+            </tr>
+            <tr *ngFor="let knjiga of ocenjene">
+                <td><a  routerLink="/prikaz-knjige/{{knjiga.naziv}}" style="color:  rgb(134, 32, 32)">{{knjiga.naziv}}</a></td>
+                <td>{{knjiga.godinaIzdanja}}.</td>
+            </tr>
+        </table>
+    </div>
+</div>

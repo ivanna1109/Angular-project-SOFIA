@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="box bg-color">
+        <h2>Vaše narudžbine</h2><br><br>
+        <div class="col-md-12">
+            <td><label class="lbl-red-invert">Naziv</label></td>
+            <td><label class="lbl-red-invert">Datum</label></td>
+            <td><label class="lbl-red-invert">Cena</label></td>
+        </div>
+            <app-narudzbenica-item *ngFor="let narudzbina of narudzbenice" [narudzbina]="narudzbina"></app-narudzbenica-item>
+    </div> 
+    <div class="container-fluid">
+        <div class="row">
+            <h3>Ukupan iznos do sada naručenih knjiga je: {{ukupanIznos}}.00 dinara</h3>
+        </div>
+    </div> 
+</div>
+

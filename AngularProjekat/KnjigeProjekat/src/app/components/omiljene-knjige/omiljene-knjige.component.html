@@ -1,0 +1,17 @@
+<div class="body">
+	<h2>Vaše omiljene knjige</h2><br><br>
+			<div *ngIf="omiljeneKnjige != undefined" >
+				<table class="table-basic table-red">
+					<tr>
+						<th>Naziv knjige</th>
+						<th>Godina izdanja</th>
+						<th>Ukloni</th>
+					</tr>
+					<tr *ngFor="let omiljena of omiljeneKnjige" >
+						<td>{{omiljena.naziv}}</td>
+						<td>{{omiljena.godinaIzdanja}}.</td>
+						<td><button class="btn-red" (click)="izbrisiIzOmiljenih(omiljena.idKnjiga)">Ukloni knjigu</button></td>
+					</tr>
+				</table>		
+			</div>
+</div>

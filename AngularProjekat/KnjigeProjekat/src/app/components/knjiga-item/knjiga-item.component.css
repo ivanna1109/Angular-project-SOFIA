@@ -1,0 +1,43 @@
+.body {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1000px;
+	text-align: center;
+	padding: 100px 50px 50px;
+	background-color: rgba(255, 255, 255, .85);
+	min-height: 100vh;
+	
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.body p{
+	text-align: justify;
+	font-size: 20px;
+}
+
+.body h3 {
+	font-weight: bold;
+}
+
+.body img{
+	width: 100px;
+	height: 100px;
+}
+
+.btn-red {
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 5px 20px;
+
+    color: whitesmoke;
+    background-color: rgb(134, 32, 32);
+    transition: border-radius .5s;
+}
+.btn-red:hover {
+    border-radius: 0;
+    cursor: pointer;
+}

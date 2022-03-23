@@ -1,0 +1,29 @@
+<div  class="nav">  
+        <div><a routerLink="sve-kategorije" class="btn btn-outline-danger btn-lg" role="button">Sve Knjige</a> </div>
+        <div *ngIf="proveriUlogovanostRadnika()">
+                <div><a  routerLink="dodaj-knjigu" class="btn btn-outline-danger btn-lg" role="button" >Dodaj Knjigu</a></div>
+        </div>
+        <div *ngIf="proveriUlogovanostRadnika()">
+                <div><a  routerLink="postavi-akciju" class="btn btn-outline-danger btn-lg" role="button" >Postavi akciju</a></div>
+        </div>
+        <div *ngIf="proveriUlogovanostRadnika()">
+                <div><a  routerLink="statistika" class="btn btn-outline-danger btn-lg" role="button" >Statistika</a></div>
+        </div>
+        <div *ngIf="proveriUlogovanostKorisnika()">
+                <div><a  routerLink="omiljene-knjige" class="btn btn-outline-danger btn-lg" role="button" >Omiljene knjige</a></div>
+        </div>
+        <div *ngIf="proveriUlogovanostKorisnika()">
+                <div><a  routerLink="lista-narudzbina" class="btn btn-outline-danger btn-lg" role="button" >Lista narudzbina</a></div>
+        </div> 
+        <div *ngIf="!proveriUlogovanost()">
+                <div><a routerLink="login"  class="btn btn-outline-danger btn-lg" role="button" >Uloguj se</a></div>  
+        </div>
+        <div *ngIf="!proveriUlogovanost()">
+                <div><a routerLink="register" class="btn btn-outline-danger btn-lg" role="button" >Registruj se</a></div>
+        </div>                        
+        <div *ngIf="proveriUlogovanost()">
+                <a routerLink="login" class="btn btn-outline-danger btn-lg" role="button" (click)="logOut()" >Odjavi se</a>
+        </div>      
+</div>               
+    <div class="background"></div>
+      <router-outlet></router-outlet>

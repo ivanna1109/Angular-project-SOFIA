@@ -1,0 +1,109 @@
+<div class="body">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4" style="text-align: left;">
+            <h2 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 30px;"><b>{{izabranaKnjiga.naziv}}</b></h2>
+            <h3 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Pisac: {{pisac.ime}} {{pisac.prezime}}</h3>            
+            <h4 *ngIf="prosecnaOcena > 0" style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Ocena: {{prosecnaOcena}}</h4>
+            <h4 *ngIf="prosecnaOcena == 0" style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Ova knjiga još nijednom nije ocenjena.</h4>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4" *ngIf="izabranaKnjiga.akcija != 0">
+            <div class="box bg-color">
+                <div class="logo">
+                    AKCIJA
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <img class="rounded float-start" style="width: 300px; height: 350px; align-self:center;" [src]="izabranaKnjiga.slika"/>
+        </div>
+        <div class="col-md-6">
+            <p style="text-align: left;">{{izabranaKnjiga.kratakOpis}}</p>  
+        </div>        
+    </div><br><br>
+    <div class="row">
+        <div class="col-md-6">
+            <form #ocenaForm="ngForm" (ngSubmit)="oceniKnjigu(ocenaForm)" style="text-align: left;">
+                <h4 class="lbl-red"> Oceni ovu knjigu: </h4>
+                <div>
+                <label class="r-btn-basic r-btn-red">1
+                    <input type="radio" ngModel name="ocena" value="1">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="r-btn-basic r-btn-red">2
+                    <input type="radio" ngModel name="ocena" value="2">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="r-btn-basic r-btn-red">3
+                    <input type="radio" ngModel name="ocena" value="3">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="r-btn-basic r-btn-red">4
+                    <input type="radio" ngModel name="ocena" value="4">
+                    <span class="checkmark"></span>
+                </label>
+                <label class="r-btn-basic r-btn-red">5
+                    <input type="radio" ngModel name="ocena" value="5" checked="checked">
+                    <span class="checkmark"></span>
+                </label>
+                </div>
+                <input type="submit" class="btn-red" value="Oceni knjigu"/>
+            </form>           
+        </div>
+        <div class="col-md-6">
+            <h4 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Izdavač: {{izdavac.naziv}}</h4>
+            <h4 style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Godina izdanja: {{izabranaKnjiga.godinaIzdanja}}.</h4>
+            <h4 *ngIf="staraCena != 0" style="color:black; text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Stara cena: {{staraCena}}din</h4>
+            <h4 *ngIf="staraCena != 0" style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Trenutna cena: {{izabranaKnjiga.cena}}din</h4>
+            <h4 *ngIf="staraCena == 0"style="color:rgb(134, 32, 32); text-align: left; text-decoration: solid; font-size: 20px; font-weight: bold;">Cena: {{izabranaKnjiga.cena}}din</h4><br><br>
+        </div>
+    </div>
+    <div class="row">
+        <h4 class="lbl-red" style="text-align: left;">Ostavi komentar: </h4>
+        <div class="col-md-6" style="text-align: left;">
+            <form #komentarForm="ngForm" (ngSubmit)="komentarisiKnjigu(komentarForm)">						
+                <textarea style="align-content: left;" class="input-f-red" ngModel name="komentar" rows="4" cols="50">Unesite komentar...</textarea>
+                <br><br><input type="submit" style="text-align: left;" class="btn-red-out" value="Komentariši"/>
+            </form>	
+        </div>
+        <div class="col-md-6" style="align-content: right;">
+            <input style="align-content: right;" class="btn-red" (click)="dodajUOmiljene()" value="Dodaj knjigu u omiljene"/>
+        </div>
+    </div>
+    <h4 class="lbl-red-invert">___________________________________________________________________________________</h4>
+    <div class="row">
+        <div class="col-12" style="text-align:center;">
+            <h3 class="lbl-red-invert" style="text-decoration: underline solid;">Naručivanje knjige</h3>
+        </div>      
+    </div><br>
+    <div class="row">
+        <div class="col-md-12" style="text-align: center;">
+            <span class="lbl-red-invert" style="font-size:20px; margin-right: 10px;">Količina knjiga:</span>
+            <span *ngIf="uKorpi > 0">
+                <button class="btn btn-dark" (click)="smanjiKolicinu()">-</button>
+            </span>
+            <span *ngIf="uKorpi == 0">
+                <button class="btn btn-dark" disabled>-</button>
+            </span>          
+            <button type="button" class="btn btn-light" style="color: rgb(134, 32, 32); font-weight: bold;">{{uKorpi}}</button>
+            <span *ngIf=" uKorpi == izabranaKnjiga.brojKnjigaLager">
+                <button class="btn btn-dark" disabled>+</button>
+            </span>
+            <span *ngIf="uKorpi < izabranaKnjiga.brojKnjigaLager">
+                <button class="btn btn-dark" (click)="povecajKolicinu()">+</button>
+            </span>
+            <span *ngIf="uKorpi > 0">
+                <input type="submit" style="align-content: right; margin-left: 20px;" class="btn-red" value="Naruči" (click)="narucivanje()"/>
+            </span>
+            <span *ngIf="uKorpi == 0">
+                <input type="submit" style="align-content: right; margin-left: 20px;" class="btn-red" value="Naruči" disabled/>
+            </span>
+        </div>
+    </div>
+</div><br><br>
+</div>

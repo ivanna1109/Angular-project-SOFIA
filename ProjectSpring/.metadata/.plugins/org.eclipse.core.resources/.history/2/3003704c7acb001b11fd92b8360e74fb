@@ -1,0 +1,96 @@
+package com.nwp.izdavacka.controllers;
+
+import java.security.Principal;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.nwp.izdavacka.repositories.KategorijaRepository;
+import com.nwp.izdavacka.repositories.KorisnikRepository;
+import com.nwp.izdavacka.repositories.UlogaRepository;
+
+import model.Kategorija;
+import model.Korisnik;
+
+
+@Controller
+@RequestMapping(value="/api/user/")
+public class LoginController {
+	
+	@Autowired
+	KorisnikRepository korisnikRep;
+	
+	@Autowired
+	UlogaRepository ulogaRep;
+	
+	@Autowired
+	KategorijaRepository kategorijaRep;
+
+	@GetMapping(value="login")
+	public String login(@RequestParam(name="username") String username, @RequestParam(name="password") String password, Principal principal) {
+		String username = principal.getName();
+		Korisnik kor = kr.findByKorisnickoIme(username).get();
+		request.getSession().setAttribute("korisnik", kor);
+		//dobavljamo sve kategorije i sve korisnike i ubacujemo u sesiju
+		List<Kategorija> kategorije = katRep.findAll();
+		List<Korisnik> korisnici = kr.findByUloga(1);
+		if ( kategorije != null && kategorije.size() > 0) {
+			request.getSession().setAttribute("kategorije", kategorije);
+			request.getSession().setAttribute("sviKorisnici", korisnici);
+		}			
+		return "index";
+	}
+	
+	@PostMapping(value="register")
+	public ResponseEntity<Boolean> registracija(@RequestParam(name="username") String username, @RequestParam(name="password") String password,
+			@RequestParam(name="ime") String ime, @RequestParam(name="prezime") String prezime,
+			@RequestParam(name="brojGodina") Integer brojGodina, @RequestParam(name="adresa") String adresa, HttpServletRequest request) {
+		
+		Korisnik kor = korisnikRep.findByKorisnickoIme(username);
+		if (kor != null) {
+			return new ResponseEntity<Boolean>(false, HttpStatus.OK);
+		}
+
+		Korisnik k = new Korisnik();
+		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
+		password = passEncoder.encode(password);
+		
+		k.setKorisnickoIme(username);
+		k.setSifra(password);
+		k.setIme(ime);
+		k.setPrezime(prezime);
+		k.setBrojGodina(brojGodina);
+		k.setAdresa(adresa);
+		
+		k.setUloga(ulogaRep.findById(2).get());
+		
+		korisnikRep.save(k);
+		
+		return new ResponseEntity<Boolean>(true, HttpStatus.OK);		
+	}
+	
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logoutPage(HttpServletRequest request, HttpServletResponse response){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null){    
+            SecurityContextHolder.getContext().setAuthentication(null);
+        }
+        return "login";
+    }
+    
+}
+

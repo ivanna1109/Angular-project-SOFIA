@@ -1,0 +1,58 @@
+<div class="body">
+    <div class="box bg-color">
+   <form (ngSubmit)="dodajNovuKnjigu(knjigaForm)" #knjigaForm="ngForm">
+        <h2>~Dodavanje nove knjige~</h2>
+        <div>
+            <span style="padding-right: 80px"><label class="lbl-basic">Naziv knjige</label></span>
+            <span style="padding-right: 90px"><label class="lbl-basic">Godina izdanja</label></span>
+        </div>
+        <div>
+            <input type="text" class="input-f-red-out" placeholder="Naziv knjige" required ngModel name="naziv"/>
+            <input type="number" class="input-f-red-out" placeholder="Godina izdanja" required ngModel name="godinaIzdanja"/>
+        </div>
+        <div>
+            <span style="padding-right: 100px"><label class="lbl-basic">Ime pisca</label></span>
+            <span style="padding-right: 100px"><label class="lbl-basic">Prezime pisca</label></span>
+        </div> 
+        <div>      
+            <input type="text" class="input-f-red-out" placeholder="Ime" required ngModel name="imePisca"/>
+            <input type="text" class="input-f-red-out" placeholder="Prezime" required ngModel name="prezimePisca"/>
+        </div>
+        <div>   
+            <span class="span5"><label class="lbl-basic">Kategorija</label></span>
+            <span class="span6"><label class="lbl-basic">Izdavač</label></span>
+        </div>
+        <div>
+            <select class="select-red" ngModel name="selectedKategorija">
+                <option value="" selected disabled style="color: white;">Izaberi..</option>
+                <option *ngFor="let kat of kategorije" value="{{kat.idKategorija}}">{{kat.nazivKategorije}}</option>
+            </select>
+            <select class="select-red" ngModel name="selectedIzdavac">
+                <option value="" selected disabled style="color: white;">Izaberi..</option>
+                <option *ngFor="let izd of izdavaci" value="{{izd.naziv}}">{{izd.naziv}}</option>
+            </select>
+        </div>
+        <div>
+            <span style="padding-right: 130px;"><label class="lbl-basic">Cena</label></span>
+            <span style="padding-right: 50px;"><label class="lbl-basic">Broj knjiga na lageru</label></span>
+        </div> 
+        <div>      
+            <input type="number" class="input-f-red-out" placeholder="Cena" required ngModel name="cena"/>
+            <input type="number" class="input-f-red-out" placeholder="Broj knjiga na lageru" required ngModel name="brojKnjigaLager"/>
+        </div>
+        <div>
+            <span style="padding-right: 300px"><label class="lbl-basic">Kratak opis</label></span>
+        </div> 
+        <div>      
+            <textarea style="align-content: left;" class="input-f-red" ngModel name="kratakOpis" rows="5" cols="50">Opis knjige...</textarea>
+        </div> 
+        <div>
+            <span style="padding-right: 400px;"><label class="lbl-basic">Slika</label></span>
+        </div>
+        <div>
+            <input type="text" class="input-f-red-out" placeholder="URL slike" required ngModel name="slika"/>
+            <button type="submit" class="btn-red-out">Dodaj novu knjigu</button>
+        </div>         
+    </form>
+</div>
+</div>

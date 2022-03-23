@@ -1,0 +1,235 @@
+
+
+.nav {
+	width: 100%;
+	height: 70px;
+	background-color: var(--red-col);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	
+	-webkit-box-shadow: 0px 0px 21px 5px rgba(0,0,0,0.51); 
+	box-shadow: 0px 0px 21px 5px rgba(0,0,0,0.51);
+	
+	z-index: 10;
+	position: fixed;
+}
+
+.nav_drop a, .nav a:link, .nav a:active, .nav a:visited, .nav a:hover {
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: 800;
+	
+}
+
+.nav .nav_drop {
+	display: flex;
+	align-items: center;
+	position: relative;
+	height: 100%;
+	min-width: 150px;
+	justify-content: center;
+	color: #fff !important;
+	text-transform: uppercase;
+	font-weight: 800;
+	cursor: pointer;
+}
+
+.nav .nav_drop .items {
+	display: none;
+	flex-direction: column;
+	background-color: var(--red-col);
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	
+	-webkit-box-shadow: 0px 58px 81px -40px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 58px 81px -40px rgba(0,0,0,0.75);
+	box-shadow: 0px 58px 81px -40px rgba(0,0,0,0.75);
+		
+	z-index: 5;
+}
+
+.nav .nav_drop:hover .items {
+	display: flex;
+}
+
+.nav .nav_drop .items span {
+	display: block;
+	padding: 10px 10px;
+	width: calc(100% - 20px);
+	margin: 0;
+	color: #fff;
+	text-transform: none;
+	font-weight: 600;
+}
+
+.nav .nav_drop .items span a {
+	text-transform: none;
+	font-weight: 600;
+}
+
+.nav .nav_drop .items span:hover {
+	background-color: #cd4a32;
+	cursor: pointer;
+}
+
+
+
+.body {
+	position: relative;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 1000px;
+	text-align: center;
+	padding: 100px 50px 50px;
+	background-color: rgba(255, 255, 255, .85);
+	min-height: 100vh;
+	
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.box {
+	margin: 30px;
+	border: 10px solid var(--red-col);
+    width: 950px;
+	background-color: rgb(124, 23, 23);
+	border-radius: 10px;
+	padding: 40px 80px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-family: sans-serif;
+	position: relative;
+}
+
+.body h2 {
+	margin-top: 10px;
+	color: whitesmoke;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.body h3 {
+	margin-top: 10px;
+	color: rgb(124, 23, 23);
+	font-weight: bold;
+	font-size: 30px;
+}
+
+.body h1 {
+	color: var(--red-col);
+	font-weight: 900;
+}
+
+.body p {
+	font-weight: 400;
+	font-size: 1.15rem;
+	width: 400px;
+	margin-top: 50px;
+}
+
+.btn-red {
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 5px 20px;
+
+    color: whitesmoke;
+    background-color: rgb(223, 10, 10);
+    transition: border-radius .5s;
+}
+.btn-red:hover {
+    border-radius: 0;
+    cursor: pointer;
+}
+.btn-red-out {
+    outline:none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 10px 25px;
+
+    color: var(--red-col);
+    background-color: transparent;
+    border: 1px solid var(--red-col);
+    transition: border-radius .5s;
+}
+.btn-red-out:hover {
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.input-f-red {
+    outline: none;
+    border-radius: 10px;
+    padding: 5px 25px;
+    transition: border-radius .5s;
+
+    background-color:  rgb(223, 10, 10);
+    border: none;
+	color: white;
+	margin: 10px;
+}
+.input-f-red:hover, .input-f-red:focus {
+    border-radius: 0;
+}
+.input-f-red-out {
+    outline: none;
+    border-radius: 10px;
+    padding: 10px 25px;
+    transition: border-radius .5s;
+
+    background-color: white;
+    border: 1px solid var(--red-col);
+    color: var(--red-col);
+}
+.input-f-red::placeholder {
+    color: #c7c6c1;
+}
+.input-f-red-out:hover, .input-f-red-out:focus {
+    border-radius: 0;
+}
+
+.lbl-basic {
+    padding: 10px 25px;
+    display: inline-block;
+	margin: 10px 10px 10px 0;
+	font-size: 20px;
+    border-top: 1px solid whitesmoke;
+    border-bottom: 1px solid whitesmoke;
+    color: whitesmoke;
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+    border-radius: 0;
+    transition: border-color .5s, border-radius .5s;
+}
+.lbl-basic:hover {
+    border-left: 1px solid;
+    border-radius: 10px 0 0 10px;
+}
+
+.lbl-red-invert {
+    border-top: 1px;
+    border-bottom: 1px;
+	border-left: 1px;
+	margin: 10px 5px 10px 5px;
+	padding-left: 100px;
+	padding-right: 100px;
+	background-color: whitesmoke;
+	color: rgb(124, 23, 23);
+	font-size: 20px;
+	font-weight: bold;
+    border-radius: 10px 0 0 10px;
+}
+
+.lbl-red-invert:hover {
+    border-left: 1px solid;
+    border-radius: 10px 0 0 10px;
+}

@@ -1,0 +1,31 @@
+<div class="body">
+    <div class="box bg-color">
+        <div class="logo">
+            SOFIA
+        </div>
+   <form (ngSubmit)="register(userForm)" #userForm="ngForm">
+        <h2>~Registracija~</h2>
+        <div>
+            <span class="span1"><label class="lbl-basic">Korisničko ime</label></span>
+            <span class="span2"><label class="lbl-basic">Šifra</label></span><br>
+        </div>
+        <input type="text" class="input-f-red-out" placeholder="Korisnicko ime" required ngModel name="username"/>
+        <input type="password" class="input-f-red-out" placeholder="********" required ngModel name="password"/><br>
+        <div>
+            <span class="span3"><label class="lbl-basic">Ime</label></span>
+            <span class="span4"><label class="lbl-basic">Prezime</label></span><br>
+        </div>       
+        <input type="text" class="input-f-red-out" placeholder="Ime" required ngModel name="ime"/>
+        <input type="text" class="input-f-red-out" placeholder="Prezime" required ngModel name="prezime"/><br>
+        <div>   
+            <span class="span5"><label class="lbl-basic">Broj godina</label></span>
+            <span class="span6"><label class="lbl-basic">Adresa</label><br></span>
+        </div>
+        <input type="number" class="input-f-red-out" placeholder="Broj godina" required ngModel name="brojGodina"/>
+        <input type="text" class="input-f-red-out" placeholder="Adresa" required ngModel name="adresa"/><br>
+        <button type="submit" class="btn-red-out">Registruj se</button>
+    </form>
+</div>
+</div>
+
+

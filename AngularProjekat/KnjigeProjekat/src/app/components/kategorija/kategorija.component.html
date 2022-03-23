@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="p-3 mb-2 bg-gradient-danger text-white">
+        <label class="lbl-red-invert">KATEGORIJE</label><br><br>
+        <span *ngFor="let kat of kategorije"><button type="button" (click)="knjigeZaKategoriju(kat.idKategorija)"class="btn btn-outline-danger">{{kat.nazivKategorije}}</button></span>
+    </div>
+    <form #searchForm="ngForm" (ngSubmit)="nadjiKnjigu(searchForm)">
+        <label class="lbl-red-invert">Pretraga knjige po nazivu: </label>
+        <input type="text" class="input-f-red" ngModel name="nazivKnjige" placeholder="Unesite naziv knjige">
+        <input type="submit" class="btn-red" value="Prikaži knjigu"/><br><br>
+    </form>
+    <div *ngIf="trazenaKnjiga != undefined">
+        <app-knjiga-item [book]='trazenaKnjiga'></app-knjiga-item>
+    </div>
+    <div *ngIf="knjige != undefined">
+        <app-knjiga-item [book]='knjiga' *ngFor="let knjiga of knjige"></app-knjiga-item> 
+    </div>  
+</div>

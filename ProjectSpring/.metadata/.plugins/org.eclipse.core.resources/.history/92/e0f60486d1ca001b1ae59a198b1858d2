@@ -1,0 +1,42 @@
+package com.nwp.izdavacka.controllers;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nwp.izdavacka.repositories.KategorijaRepository;
+import com.nwp.izdavacka.repositories.KnjigaRepository;
+
+import model.Knjiga;
+
+import org.springframework.web.bind.annotation.CrossOrigin; 
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@RestController  
+@CrossOrigin(origins="http://localhost:4200")  
+@RequestMapping(value="/api/knjige")  
+public class KnjigaController {
+
+	@Autowired
+	KnjigaRepository knjigaRep;
+	
+	@Autowired
+	KategorijaRepository kategorijaRep;
+	
+	@GetMapping(value="/knjigas-list")
+	public ResponseEntity<List<Knjiga>> allKnjigas(){
+		List<Knjiga> sveKnjige = knjigaRep.findAll();
+		return new ResponseEntity<List<Knjiga>>(sveKnjige, HttpStatus.OK);
+	}
+	
+	@GetMapping(value="/knjigas-list")
+	public ResponseEntity<List<Knjiga>> allKnjigas(){
+		List<Knjiga> sveKnjige = knjigaRep.findAll();
+		return new ResponseEntity<List<Knjiga>>(sveKnjige, HttpStatus.OK);
+	}
+}

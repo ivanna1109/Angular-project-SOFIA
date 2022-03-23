@@ -1,0 +1,15 @@
+<div class="body">
+    <div class="box bg-color">
+        <div class="logo">
+            SOFIA
+        </div>
+        <form (ngSubmit)="login()">
+            <h2>~Prijava~</h2>
+            <label class="lbl-basic">Korisničko ime</label><br>
+            <input type="text" class="input-f-red-out" placeholder="korisnickoIme" name="username" required [(ngModel)]="username"> <br><br>
+            <label class="lbl-basic">Šifra</label><br>
+            <input type="password" class="input-f-red-out" placeholder="*********" name="password" required [(ngModel)]="password"> <br><br>
+            <button class="btn-red-out" type="submit">Prijavi se</button><br><br><br>
+        </form>
+        </div>
+</div>

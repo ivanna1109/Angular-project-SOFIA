@@ -1,0 +1,26 @@
+<div class="body">
+    <h2>Postavljanje akcija</h2><br>
+    <form #searchForm="ngForm" (ngSubmit)="nadjiKnjigu(searchForm)">
+        <label class="lbl-red-invert">  Pretraga knjige po nazivu: </label>
+        <input type="text" class="input-f-red-out" ngModel name="nazivKnjige" placeholder="Unesite naziv knjige">
+        <input type="submit" class="btn-red" value="Prikaži knjigu"/><br><br>
+    </form><br><br><br><br>
+    <div *ngIf="trazenaKnjiga != undefined">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 style="color:rgb(134, 32, 32);  font-weight: bold; font-size: 20px;">Tražena knjiga postoji u bazi.</h3>
+                    <h3 style="color:rgb(134, 32, 32);  font-weight: bold; font-size: 20px;">Trenutna cena knjige je: {{trazenaKnjiga.cena}} dinara</h3>
+                    <form #akcijaForm="ngForm" (ngSubmit)="postaviAkciju(akcijaForm)">
+                        <input type="number" class="input-f-red" ngModel name="procenatAkcije" placeholder="Unesite procenat akcije">
+                        <input type="submit" class="btn-red-out" value="Sačuvaj akciju"/><br><br>
+                     </form>
+                    
+                </div>
+            </div>
+            <div class="row" *ngIf="novaCena != undefined">
+                <h3 style="color:rgb(134, 32, 32);  font-weight: bold; font-size: 20px;">Nova cena knjige je: {{novaCena}}din</h3>
+            </div>
+        </div>
+    </div>
+</div>
